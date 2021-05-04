@@ -1,6 +1,6 @@
-# Routindo Plugin Template
+# Routindo Plugin IO
 
-![Routindo Plugin Template](https://github.com/Routindo/Routindo.PluginTemplate/blob/main/Source/Routindo.Plugins.Template/icon.png)
+![Routindo Plugin IO](https://github.com/Routindo/Routindo.PluginIO/blob/main/Source/Routindo.Plugins.Serialization/icon.png)
 - [Project Page](https://routindo.com/docs/plugins-development/) 
 - [Documentation](https://routindo.com/docs/plugins-development/) 
 - Please Ask Support on the [official Forums](https://routindo.com/support/forum/?view=forum&id=16). 

@@ -4,11 +4,14 @@
 		<TargetFramework>net5.0-windows</TargetFramework>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Actions\" />
-    <Folder Include="ArgumentsMappers\" />
-    <Folder Include="Watchers\" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="ArgumentsMappers\**" />
+	  <Compile Remove="Watchers\**" />
+	  <EmbeddedResource Remove="ArgumentsMappers\**" />
+	  <EmbeddedResource Remove="Watchers\**" />
+	  <None Remove="ArgumentsMappers\**" />
+	  <None Remove="Watchers\**" />
+	</ItemGroup>
 
 	
 

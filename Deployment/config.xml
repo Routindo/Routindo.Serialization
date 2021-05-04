@@ -8,14 +8,14 @@
 		<Setting Key="PluginsBuilder" Value="../../../Deployment/PluginsBuilder.CLI/Routindo.PluginsBuilder.CLI.exe" />
 	</Settings>
 	<Projects>
-		<Project Order="1" Name="Template.Components" Share="False" Pack="False" SelfContained="False"
-		Directory="Routindo.Plugins.Template.Components" File="Routindo.Plugins.Template.Components.csproj" DeploymentDir="Routindo.Template" CleanDeploymentDir="True"/>
+		<Project Order="1" Name="IO.Components" Share="False" Pack="False" SelfContained="False"
+		Directory="Routindo.Plugins.Serialization.Components" File="Routindo.Plugins.Serialization.Components.csproj" DeploymentDir="Routindo.Serialization" CleanDeploymentDir="True"/>
 		
-		<Project Order="2" Name="Template.UI" Share="False" Pack="False" SelfContained="False"
-		Directory="Routindo.Plugins.Template.UI" File="Routindo.Plugins.Template.UI.csproj" DeploymentDir="Routindo.Template" CleanDeploymentDir="False"/>
+		<Project Order="2" Name="IO.UI" Share="False" Pack="False" SelfContained="False"
+		Directory="Routindo.Plugins.Serialization.UI" File="Routindo.Plugins.Serialization.UI.csproj" DeploymentDir="Routindo.Serialization" CleanDeploymentDir="False"/>
 		
-		<Project Order="3" Name="Template" Share="False" Pack="True" SelfContained="False"
-		Directory="Routindo.Plugins.Template" File="Routindo.Plugins.Template.csproj" DeploymentDir="Routindo.Template" CleanDeploymentDir="False"/>
+		<Project Order="3" Name="IO" Share="False" Pack="True" SelfContained="False"
+		Directory="Routindo.Plugins.Serialization" File="Routindo.Plugins.Serialization.csproj" DeploymentDir="Routindo.Serialization" CleanDeploymentDir="False"/>
 		
 	</Projects>
 	<Dependencies>
