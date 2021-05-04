@@ -5,6 +5,7 @@ using Routindo.Contract;
 using Routindo.Contract.Arguments;
 using Routindo.Contract.Helpers;
 using Routindo.Contract.Services;
+using Routindo.Plugins.Serialization.Components.Actions.Base;
 using Routindo.Plugins.Serialization.Components.Actions.Json;
 using Routindo.Plugins.Serialization.Tests.Mock;
 
@@ -54,7 +55,7 @@ namespace Routindo.Plugins.Serialization.Tests
             }; 
 
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -88,7 +89,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -126,7 +127,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -165,7 +166,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -204,7 +205,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -243,7 +244,7 @@ namespace Routindo.Plugins.Serialization.Tests
             };
 
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -278,7 +279,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -316,7 +317,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -355,7 +356,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -394,7 +395,7 @@ namespace Routindo.Plugins.Serialization.Tests
                 }
             };
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteJsonToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
