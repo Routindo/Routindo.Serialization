@@ -8,7 +8,6 @@ using Routindo.Contract.Actions;
 using Routindo.Contract.Arguments;
 using Routindo.Contract.Attributes;
 using Routindo.Contract.Exceptions;
-using Routindo.Contract.Helpers;
 using Routindo.Contract.Services;
 
 namespace Routindo.Plugins.Serialization.Components.Actions.Json
@@ -59,8 +58,7 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
                     throw new Exception($"Content is null");
 
                 string text = ToJsonString(content, WriteIndented);
-                // text = content.ToJsonString();
-                
+
                 if (string.IsNullOrWhiteSpace(FilePath))
                     throw new MissingArgumentException(WriteJsonToFileActionArgs.FilePath);
 
@@ -79,23 +77,15 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
                         stringBuilder.AppendLine(text);
                     }
                     else stringBuilder.Append(text);
+
                     text = stringBuilder.ToString();
 
-                    //if (WriteIndented)
-                    //    // Force Format
-                    //    File.AppendAllLines(FilePath, text.Split('\n'));
-                    //else 
-                        File.AppendAllText(FilePath, text);
+                    File.AppendAllText(FilePath, text);
 
                 }
                 else
                 {
-                    //if(WriteIndented)
-                    // Force Format
-                    //File.WriteAllLines(FilePath, text.Split('\n'));
-                    //else 
                     File.WriteAllText(FilePath, text);
-
                 }
 
                 return ActionResult.Succeeded();

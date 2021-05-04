@@ -4,12 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Routindo.Contract;
 using Routindo.Contract.Arguments;
 using Routindo.Contract.Services;
-using Routindo.Plugins.Serialization.Components.Actions.ContentToFile;
+using Routindo.Plugins.Serialization.Components.Actions.Text;
 
 namespace Routindo.Plugins.Serialization.Tests
 {
     [TestClass]
-    public class WriteContentToFileActionTests
+    public class WriteTextToFileActionTests
     {
         private string _filePath;
 
@@ -30,16 +30,16 @@ namespace Routindo.Plugins.Serialization.Tests
         [TestCategory("Integration Test")]
         public void WriteContentToFileActionTest()
         {
-            WriteContentToFileAction action = new WriteContentToFileAction()
+            WriteTextToFileAction action = new WriteTextToFileAction()
             {
                 Id = PluginUtilities.GetUniqueId(),
-                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteContentToFileAction)),
+                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteTextToFileAction)),
                 FilePath = _filePath
                 // ,Append = false
             };
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteTextToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -51,10 +51,10 @@ namespace Routindo.Plugins.Serialization.Tests
         [TestCategory("Integration Test")]
         public void AppendNoNewLineContentToFileActionTest()
         {
-            WriteContentToFileAction action = new WriteContentToFileAction()
+            WriteTextToFileAction action = new WriteTextToFileAction()
             {
                 Id = PluginUtilities.GetUniqueId(),
-                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteContentToFileAction)),
+                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteTextToFileAction)),
                 FilePath = _filePath,
                 Append = true
             };
@@ -62,7 +62,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteTextToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -77,10 +77,10 @@ namespace Routindo.Plugins.Serialization.Tests
         [TestCategory("Integration Test")]
         public void AppendNewLineAfterContentToFileActionTest()
         { 
-            WriteContentToFileAction action = new WriteContentToFileAction()
+            WriteTextToFileAction action = new WriteTextToFileAction()
             {
                 Id = PluginUtilities.GetUniqueId(),
-                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteContentToFileAction)),
+                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteTextToFileAction)),
                 FilePath = _filePath,
                 Append = true, 
                 NewLineBeforeAppend = false,
@@ -90,7 +90,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteTextToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -105,10 +105,10 @@ namespace Routindo.Plugins.Serialization.Tests
         [TestCategory("Integration Test")]
         public void AppendNewLineBeforeContentToFileActionTest()
         {
-            WriteContentToFileAction action = new WriteContentToFileAction()
+            WriteTextToFileAction action = new WriteTextToFileAction()
             {
                 Id = PluginUtilities.GetUniqueId(),
-                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteContentToFileAction)),
+                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteTextToFileAction)),
                 FilePath = _filePath,
                 Append = true,
                 NewLineBeforeAppend = true,
@@ -118,7 +118,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteTextToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -133,10 +133,10 @@ namespace Routindo.Plugins.Serialization.Tests
         [TestCategory("Integration Test")]
         public void AppendNewLineBeforeAfterContentToFileActionTest()
         {
-            WriteContentToFileAction action = new WriteContentToFileAction()
+            WriteTextToFileAction action = new WriteTextToFileAction()
             {
                 Id = PluginUtilities.GetUniqueId(),
-                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteContentToFileAction)),
+                LoggingService = ServicesContainer.ServicesProvider.GetLoggingService(nameof(WriteTextToFileAction)),
                 FilePath = _filePath,
                 Append = true,
                 NewLineBeforeAppend = true,
@@ -146,7 +146,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
+                .WithArgument(WriteTextToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));

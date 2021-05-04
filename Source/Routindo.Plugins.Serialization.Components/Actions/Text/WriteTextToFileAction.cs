@@ -6,28 +6,28 @@ using Routindo.Contract.Actions;
 using Routindo.Contract.Arguments;
 using Routindo.Contract.Attributes;
 using Routindo.Contract.Exceptions;
-using Routindo.Contract.Services; 
+using Routindo.Contract.Services;
 
-namespace Routindo.Plugins.Serialization.Components.Actions.ContentToFile
+namespace Routindo.Plugins.Serialization.Components.Actions.Text
 {
-    [PluginItemInfo(ComponentUniqueId, nameof(WriteContentToFileAction),
-         "Write Content to file, by overwriting or appending to existing file or creating a new one.", 
-         Category = "Text", FriendlyName = "Write content to file"),
-     ExecutionArgumentsClass(typeof(WriteContentToFileActionExecutionArgs))
+    [PluginItemInfo(ComponentUniqueId, nameof(WriteTextToFileAction),
+         "Write Text Content to file, by overwriting or appending to existing file or creating a new one.", 
+         Category = "Text", FriendlyName = "Write Text to file"),
+     ExecutionArgumentsClass(typeof(WriteTextToFileActionExecutionArgs))
     ]
-    public class WriteContentToFileAction: IAction
+    public class WriteTextToFileAction: IAction
     {
         public const string ComponentUniqueId = "91CA4230-6FA5-4DC1-AEE0-C474A64F95E5";
         public string Id { get; set; }
         public ILoggingService LoggingService { get; set; }
 
-        [Argument(WriteContentToFileActionArgs.FilePath, true)] public string FilePath { get; set; }
+        [Argument(WriteTextToFileActionArgs.FilePath, true)] public string FilePath { get; set; }
 
-        [Argument(WriteContentToFileActionArgs.Append)] public bool Append { get; set; }
+        [Argument(WriteTextToFileActionArgs.Append)] public bool Append { get; set; }
 
-        [Argument(WriteContentToFileActionArgs.NewLineBeforeAppend)] public bool NewLineBeforeAppend { get; set; }
+        [Argument(WriteTextToFileActionArgs.NewLineBeforeAppend)] public bool NewLineBeforeAppend { get; set; }
 
-        [Argument(WriteContentToFileActionArgs.NewLineAfterAppend)] public bool NewLineAfterAppend { get; set; }
+        [Argument(WriteTextToFileActionArgs.NewLineAfterAppend)] public bool NewLineAfterAppend { get; set; }
 
         public ActionResult Execute(ArgumentCollection arguments)
         { 
@@ -36,16 +36,16 @@ namespace Routindo.Plugins.Serialization.Components.Actions.ContentToFile
                 if (arguments == null || !arguments.Any())
                     throw new MissingArgumentsException($"Arguments are mandatory to execute this action");
 
-                if (!arguments.HasArgument(WriteContentToFileActionExecutionArgs.Content))
-                    throw new MissingArgumentException(WriteContentToFileActionExecutionArgs.Content);
+                if (!arguments.HasArgument(WriteTextToFileActionExecutionArgs.Content))
+                    throw new MissingArgumentException(WriteTextToFileActionExecutionArgs.Content);
 
-                var content = arguments.GetValue<object>(WriteContentToFileActionExecutionArgs.Content);
+                var content = arguments.GetValue<object>(WriteTextToFileActionExecutionArgs.Content);
                 if (content == null)
                     throw new Exception($"Content is null");
                 string text = content.ToString();
 
                 if (string.IsNullOrWhiteSpace(FilePath))
-                    throw new MissingArgumentException(WriteContentToFileActionArgs.FilePath);
+                    throw new MissingArgumentException(WriteTextToFileActionArgs.FilePath);
 
                 bool append = File.Exists(FilePath) && Append;
 
