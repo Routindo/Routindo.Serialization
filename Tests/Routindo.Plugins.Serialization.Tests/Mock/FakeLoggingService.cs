@@ -11,8 +11,8 @@ namespace Routindo.Plugins.Serialization.Tests.Mock
         private void Log(string level, string message)
         {
             Console.WriteLine(_type != null
-                ? $"[{level.ToUpper().PadRight(5)}][{DateTime.Now:G}][{_type.Name}][{_name}] {string.Format(message)}"
-                : $"[{level.ToUpper().PadRight(5)}][{DateTime.Now:G}][{_name}] {string.Format(message)}");
+                ? $"[{level.ToUpper().PadRight(5)}][{DateTime.Now:G}][{_type.Name}][{_name}] {message}"
+                : $"[{level.ToUpper().PadRight(5)}][{DateTime.Now:G}][{_name}] {message}");
         }
 
         private void Log<T>(string level, T value)

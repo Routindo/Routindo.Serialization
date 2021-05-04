@@ -6,14 +6,14 @@ using Routindo.Contract.Actions;
 using Routindo.Contract.Arguments;
 using Routindo.Contract.Attributes;
 using Routindo.Contract.Exceptions;
-using Routindo.Contract.Services;
+using Routindo.Contract.Services; 
 
-namespace Routindo.Plugins.Serialization.Components.Actions
+namespace Routindo.Plugins.Serialization.Components.Actions.ContentToFile
 {
     [PluginItemInfo(ComponentUniqueId, nameof(WriteContentToFileAction),
          "Write Content to file, by overwriting or appending to existing file or creating a new one.", 
          Category = "Text", FriendlyName = "Write content to file"),
-     ExecutionArgumentsClass(typeof(WriteTextActionExecutionArgs))
+     ExecutionArgumentsClass(typeof(WriteContentToFileActionExecutionArgs))
     ]
     public class WriteContentToFileAction: IAction
     {
@@ -21,13 +21,13 @@ namespace Routindo.Plugins.Serialization.Components.Actions
         public string Id { get; set; }
         public ILoggingService LoggingService { get; set; }
 
-        [Argument(WriteTextActionArgs.FilePath, true)] public string FilePath { get; set; }
+        [Argument(WriteContentToFileActionArgs.FilePath, true)] public string FilePath { get; set; }
 
-        [Argument(WriteTextActionArgs.Append)] public bool Append { get; set; }
+        [Argument(WriteContentToFileActionArgs.Append)] public bool Append { get; set; }
 
-        [Argument(WriteTextActionArgs.NewLineBeforeAppend)] public bool NewLineBeforeAppend { get; set; }
+        [Argument(WriteContentToFileActionArgs.NewLineBeforeAppend)] public bool NewLineBeforeAppend { get; set; }
 
-        [Argument(WriteTextActionArgs.NewLineAfterAppend)] public bool NewLineAfterAppend { get; set; }
+        [Argument(WriteContentToFileActionArgs.NewLineAfterAppend)] public bool NewLineAfterAppend { get; set; }
 
         public ActionResult Execute(ArgumentCollection arguments)
         { 
@@ -36,16 +36,16 @@ namespace Routindo.Plugins.Serialization.Components.Actions
                 if (arguments == null || !arguments.Any())
                     throw new MissingArgumentsException($"Arguments are mandatory to execute this action");
 
-                if (!arguments.HasArgument(WriteTextActionExecutionArgs.Content))
-                    throw new MissingArgumentException(WriteTextActionExecutionArgs.Content);
+                if (!arguments.HasArgument(WriteContentToFileActionExecutionArgs.Content))
+                    throw new MissingArgumentException(WriteContentToFileActionExecutionArgs.Content);
 
-                var content = arguments.GetValue<object>(WriteTextActionExecutionArgs.Content);
+                var content = arguments.GetValue<object>(WriteContentToFileActionExecutionArgs.Content);
                 if (content == null)
-                    throw new Exception($"Text is null");
+                    throw new Exception($"Content is null");
                 string text = content.ToString();
 
                 if (string.IsNullOrWhiteSpace(FilePath))
-                    throw new MissingArgumentException(WriteTextActionArgs.FilePath);
+                    throw new MissingArgumentException(WriteContentToFileActionArgs.FilePath);
 
                 bool append = File.Exists(FilePath) && Append;
 

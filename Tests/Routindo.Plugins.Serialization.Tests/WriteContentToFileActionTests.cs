@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Routindo.Contract;
 using Routindo.Contract.Arguments;
 using Routindo.Contract.Services;
-using Routindo.Plugins.Serialization.Components.Actions;
+using Routindo.Plugins.Serialization.Components.Actions.ContentToFile;
 
 namespace Routindo.Plugins.Serialization.Tests
 {
@@ -39,7 +39,7 @@ namespace Routindo.Plugins.Serialization.Tests
             };
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteTextActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -62,7 +62,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteTextActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -90,7 +90,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteTextActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -118,7 +118,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteTextActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
@@ -146,7 +146,7 @@ namespace Routindo.Plugins.Serialization.Tests
             File.WriteAllText(_filePath, initialContent);
             var content = "Hello world!";
             action.Execute(ArgumentCollection.New()
-                .WithArgument(WriteTextActionExecutionArgs.Content, content)
+                .WithArgument(WriteContentToFileActionExecutionArgs.Content, content)
             );
 
             Assert.IsTrue(File.Exists(_filePath));
