@@ -6,7 +6,7 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Text
 {
     [PluginItemInfo(ComponentUniqueId, nameof(WriteTextToFileAction),
          "Write Text Content to file, by overwriting or appending to existing file or creating a new one.",
-         Category = "Text", FriendlyName = "Write Text to file"),
+         Category = "Serialization", FriendlyName = "Write Text to file"),
      ExecutionArgumentsClass(typeof(WriteContentToFileActionExecutionArgs)),
     ResultArgumentsClass(typeof(WriteContentToFileActionResultArgs))
     ]

@@ -8,7 +8,7 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
 {
     [PluginItemInfo(ComponentUniqueId, nameof(WriteJsonToFileAction),
          "Write Json from  to file, by overwriting or appending to existing file or creating a new one.",
-         Category = "Text", FriendlyName = "Write JSon to file"),
+         Category = "Serialization", FriendlyName = "Write JSon to file"),
      ExecutionArgumentsClass(typeof(WriteContentToFileActionExecutionArgs)),
         ResultArgumentsClass(typeof(WriteContentToFileActionResultArgs))
     ]
