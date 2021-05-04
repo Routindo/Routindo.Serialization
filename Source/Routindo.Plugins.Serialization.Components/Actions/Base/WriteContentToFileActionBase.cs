@@ -63,7 +63,16 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Base
                     File.AppendAllText(FilePath, text);
                 }
                 else
+                {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    if (NewLineAfterAppend)
+                    {
+                        stringBuilder.AppendLine(text);
+                        text = stringBuilder.ToString();
+                    }
+
                     File.WriteAllText(FilePath, text);
+                }
 
                 return ActionResult.Succeeded().WithAdditionInformation(ArgumentCollection.New()
                     .WithArgument(WriteContentToFileActionResultArgs.SerializedContent, text)
