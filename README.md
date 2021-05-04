@@ -1,8 +1,8 @@
-# Routindo Plugin IO
+# Routindo Serialization Plugin
 
-![Routindo Plugin IO](https://github.com/Routindo/Routindo.PluginIO/blob/main/Source/Routindo.Plugins.Serialization/icon.png)
-- [Project Page](https://routindo.com/docs/plugins-development/) 
-- [Documentation](https://routindo.com/docs/plugins-development/) 
+![Routindo Serialization Plugin](https://github.com/Routindo/Routindo.Serialization/blob/main/Source/Routindo.Plugins.Serialization/icon.png)
+- [Project Page](https://routindo.com/docs/serialization/) 
+- [Documentation](https://routindo.com/docs/serialization/) 
 - Please Ask Support on the [official Forums](https://routindo.com/support/forum/?view=forum&id=16). 
 
 # This is a [Routindo](https://routindo.com) Plugin! 
