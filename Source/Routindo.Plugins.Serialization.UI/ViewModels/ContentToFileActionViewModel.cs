@@ -53,6 +53,11 @@ namespace Routindo.Plugins.Serialization.UI.ViewModels
             set
             {
                 _append = value;
+                if (!value)
+                {
+                    if (NewLineBeforeAppend) NewLineBeforeAppend = false;
+                    if (NewLineAfterAppend) NewLineAfterAppend = false;
+                }
                 OnPropertyChanged();
             }
         }

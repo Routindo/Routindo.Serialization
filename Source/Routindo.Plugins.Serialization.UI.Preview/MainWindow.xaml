@@ -7,7 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <views:JsonToFileActionView />
+        <TabControl>
+            <TabItem Header="Json To File">
+                <views:JsonToFileActionView />
+            </TabItem>
+
+            <TabItem Header="Text To File">
+                <views:TextToFileActionView />
+            </TabItem>
+        </TabControl>
         
     </Grid>
 </Window>

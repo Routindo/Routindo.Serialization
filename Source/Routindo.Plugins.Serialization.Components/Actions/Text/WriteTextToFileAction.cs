@@ -30,7 +30,8 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Text
         [Argument(WriteTextToFileActionArgs.NewLineAfterAppend)] public bool NewLineAfterAppend { get; set; }
 
         public ActionResult Execute(ArgumentCollection arguments)
-        { 
+        {
+            string text = null;
             try
             {
                 if (arguments == null || !arguments.Any())
@@ -42,7 +43,7 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Text
                 var content = arguments.GetValue<object>(WriteTextToFileActionExecutionArgs.Content);
                 if (content == null)
                     throw new Exception($"Content is null");
-                string text = content.ToString();
+                text = content.ToString();
 
                 if (string.IsNullOrWhiteSpace(FilePath))
                     throw new MissingArgumentException(WriteTextToFileActionArgs.FilePath);
@@ -65,13 +66,25 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Text
                 else
                     File.WriteAllText(FilePath, text);
 
-                return ActionResult.Succeeded();
+                return ActionResult.Succeeded().WithAdditionInformation(ArgumentCollection.New()
+                    .WithArgument(WriteTextToFileActionResultArgs.JsonText, text)
+                    .WithArgument(WriteTextToFileActionResultArgs.OutputFilePath, FilePath)
+                );
             }
             catch (Exception exception)
             {
                 LoggingService.Error(exception);
-                return ActionResult.Failed(exception);
+                return ActionResult.Failed(exception).WithAdditionInformation(ArgumentCollection.New()
+                    .WithArgument(WriteTextToFileActionResultArgs.JsonText, text)
+                    .WithArgument(WriteTextToFileActionResultArgs.OutputFilePath, FilePath)
+                );
             }
         }
+    }
+     
+    public static class WriteTextToFileActionResultArgs
+    {
+        public const string JsonText = nameof(JsonText);
+        public const string OutputFilePath = nameof(OutputFilePath);
     }
 }

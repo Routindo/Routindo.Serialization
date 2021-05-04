@@ -45,6 +45,7 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
 
         public ActionResult Execute(ArgumentCollection arguments)
         {
+            string text = null;
             try
             {
                 if (arguments == null || !arguments.Any())
@@ -57,7 +58,7 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
                 if (content == null)
                     throw new Exception($"Content is null");
 
-                string text = ToJsonString(content, WriteIndented);
+                text = ToJsonString(content, WriteIndented);
 
                 if (string.IsNullOrWhiteSpace(FilePath))
                     throw new MissingArgumentException(WriteJsonToFileActionArgs.FilePath);
@@ -88,12 +89,18 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
                     File.WriteAllText(FilePath, text);
                 }
 
-                return ActionResult.Succeeded();
+                return ActionResult.Succeeded().WithAdditionInformation(ArgumentCollection.New()
+                    .WithArgument(WriteJsonToFileActionResultArgs.JsonText, text)
+                    .WithArgument(WriteJsonToFileActionResultArgs.OutputFilePath, FilePath)
+                );
             }
             catch (Exception exception)
             {
                 LoggingService.Error(exception);
-                return ActionResult.Failed(exception);
+                return ActionResult.Failed(exception).WithAdditionInformation(ArgumentCollection.New()
+                    .WithArgument(WriteJsonToFileActionResultArgs.JsonText, text)
+                    .WithArgument(WriteJsonToFileActionResultArgs.OutputFilePath, FilePath)
+                );
             }
         }
 
@@ -105,5 +112,11 @@ namespace Routindo.Plugins.Serialization.Components.Actions.Json
                 return JsonSerializer.Serialize(obj, _options);
             return JsonSerializer.Serialize(obj);
         }
+    }
+
+    public static class WriteJsonToFileActionResultArgs
+    {
+        public const string JsonText = nameof(JsonText);
+        public const string OutputFilePath = nameof(OutputFilePath);
     }
 }
