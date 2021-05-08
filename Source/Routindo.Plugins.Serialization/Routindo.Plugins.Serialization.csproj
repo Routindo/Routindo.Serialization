@@ -2,6 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0-windows</TargetFramework>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<ItemGroup>
